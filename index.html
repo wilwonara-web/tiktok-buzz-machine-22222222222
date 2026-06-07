@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok France Buzz Tracker - 974, Catégories & Recents</title>
+    <meta name="description" content="Découvrez en temps réel les 10 vidéos TikTok les plus tendances en France par catégorie et publiées récemment.">
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- html2pdf.js Bundle CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="background-glows">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <span class="logo-text">TikTok</span>
+                <span class="logo-badge">FR BUZZ</span>
+            </div>
+            <h1>tiktok buzz machine !!!</h1>
+            <p class="subtitle" style="margin-bottom:1.5rem;">trouvez ce qui buzz sur tiktok en ce moment !!!</p>
+            
+            <!-- Explanatory notice in red -->
+            <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 0.8rem 1.2rem; text-align: left; max-width: 800px; margin: 0 auto; line-height: 1.5; color: #ff8b8b; font-size: 0.85rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                <span style="font-size: 1.2rem; margin-top: 2px;">⚠️</span>
+                <div style="font-weight: 500;">
+                    <strong>Important :</strong> une page google chrome incognito va s'ouvrir !<br>
+                    Résolvez le captcha si la fenêtre Chromium le demande.<br>
+                    Temps de recherche : ~3 min.<br>
+                    Export PDF inclus en haut à gauche de la recherche.<br>
+                    Utilisez la croix ❌ pour écarter un résultat erroné.
+                </div>
+            </div>
+        </header>
+
+        <section class="control-panel glass">
+            <div class="panel-left">
+                <h2>1. Choisissez la catégorie</h2>
+                <div class="category-tabs" role="tablist">
+                    <button class="category-tab active" data-category="humour" role="tab" aria-selected="true" id="tab-humour">
+                        <span class="tab-emoji">😂</span>
+                        <span class="tab-label">Humour</span>
+                    </button>
+                    <button class="category-tab" data-category="cuisine" role="tab" aria-selected="false" id="tab-cuisine">
+                        <span class="tab-emoji">🍳</span>
+                        <span class="tab-label">Cuisine</span>
+                    </button>
+                    <button class="category-tab" data-category="jeuvideo" role="tab" aria-selected="false" id="tab-jeuvideo">
+                        <span class="tab-emoji">🎮</span>
+                        <span class="tab-label">Jeu Vidéo</span>
+                    </button>
+                    <button class="category-tab" data-category="974" role="tab" aria-selected="false" id="tab-974">
+                        <span class="tab-emoji">🏝️</span>
+                        <span class="tab-label">974</span>
+                    </button>
+                    <button class="category-tab" data-category="team974" role="tab" aria-selected="false" id="tab-team974">
+                        <span class="tab-emoji">🔴</span>
+                        <span class="tab-label">Team 974</span>
+                    </button>
+                    <button class="category-tab" data-category="fyp" role="tab" aria-selected="false" id="tab-fyp">
+                        <span class="tab-emoji">🔥</span>
+                        <span class="tab-label">FYP</span>
+                    </button>
+                    <button class="category-tab" data-category="twitch" role="tab" aria-selected="false" id="tab-twitch">
+                        <span class="tab-emoji">🟣</span>
+                        <span class="tab-label">Twitch</span>
+                    </button>
+                    <button class="category-tab" data-category="youtube" role="tab" aria-selected="false" id="tab-youtube">
+                        <span class="tab-emoji">▶️</span>
+                        <span class="tab-label">YouTube</span>
+                    </button>
+                    <button class="category-tab" data-category="custom" role="tab" aria-selected="false" id="tab-custom">
+                        <span class="tab-emoji">⚙️</span>
+                        <span class="tab-label">Custom</span>
+                    </button>
+                </div>
+
+                <div id="custom-hashtag-container" class="hidden" style="margin-bottom:1.5rem;animation:fadeIn 0.3s ease;">
+                    <label for="input-custom-hashtag" style="display:block;font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;font-weight:600;">Entrez le hashtag personnalisé :</label>
+                    <div style="display:flex;gap:0.5rem;max-width:350px;">
+                        <span style="background:rgba(255,255,255,0.05);border:1px solid var(--border-color);border-right:none;border-radius:12px 0 0 12px;padding:0.75rem 1rem;color:var(--color-tiktok-magenta);font-weight:800;display:flex;align-items:center;">#</span>
+                        <input type="text" id="input-custom-hashtag" placeholder="ex: viral, sport..." style="flex-grow:1;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:0 12px 12px 0;padding:0.75rem 1rem;color:white;font-family:var(--font-sans);outline:none;font-weight:600;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--color-tiktok-cyan)'" onblur="this.style.borderColor='var(--border-color)'">
+                    </div>
+                </div>
+                
+                <p class="panel-desc">Échantillon de 70 vidéos, fallback progressif (24h → 3j → 7j), filtre 10K, minimum 20 résultats garantis. Lecteur TikTok intégré.</p>
+                
+                <button id="btn-start-scraping" class="btn btn-primary">
+                    <span class="btn-text">Démarrer la recherche</span>
+                    <span class="btn-loader"></span>
+                </button>
+            </div>
+            <div class="panel-right">
+                <div class="console-header">
+                    <span class="console-dot red"></span>
+                    <span class="console-dot yellow"></span>
+                    <span class="console-dot green"></span>
+                    <span class="console-title">Console de suivi</span>
+                </div>
+                <div id="console-logs" class="console-body">
+                    <div class="log-message system">Prêt à démarrer. Sélectionnez une catégorie puis cliquez sur le bouton.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2 id="results-title" class="section-title hidden">Vidéos tendances détectées</h2>
+                <button id="btn-export-pdf" class="btn btn-secondary hidden">📥 Exporter le Bilan en PDF</button>
+            </div>
+            <div id="videos-grid" class="videos-grid">
+                <!-- Video cards will be injected here dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 TikTok France Buzz Tracker. Réalisé pour automatisation locale.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
