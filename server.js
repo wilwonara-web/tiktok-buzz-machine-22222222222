@@ -6,10 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-// Serve public folder and fallback to index.html on root
-app.use(express.static(path.resolve(__dirname, 'public')));
+// Serve files directly from root folder
+app.use(express.static(path.resolve(__dirname)));
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 // Root route fallback
