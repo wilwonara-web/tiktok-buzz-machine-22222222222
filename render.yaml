@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tiktok-buzz-tracker
+    env: docker
+    plan: free
+    region: frankfurt # Nearest European server for France scraping latency
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,15 @@
+{
+  "name": "tiktok-trends-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes and displays the top 10 trending TikTok videos in France using Playwright",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "playwright": "^1.44.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
